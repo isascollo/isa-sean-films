@@ -1,0 +1,8 @@
+.Content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 48px;
+    min-height: 1000px;
+    width: 100%;
+}
