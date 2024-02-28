@@ -1,17 +1,17 @@
 .Header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-family: 'Roboto', sans-serif;
-    color: #FEDEB7;
-    background-color: #330C2F;
-    font-weight: 1000;
-    align-items: center;
-    height: 300px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  color: #fedeb7;
+  background-color: #330c2f;
+  font-weight: 1000;
+  align-items: center;
+  height: 300px;
+  width: 100%;
 }
 
 .Header h1 {
-    font-size: 72px;
-    margin: 24px 0 24px 0;
+  font-size: 72px;
+  margin: 24px 0 24px 0;
 }

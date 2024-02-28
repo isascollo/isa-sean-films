@@ -1,8 +1,7 @@
-import React, {CSSProperties, useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Tile.module.css";
 import { MovieReview } from "../../types/types";
-import Bee from "../Icons/Bee";
-import HalfBee from "../Icons/HalfBee";
+import Bees from "../Bees/Bees";
 
 const Tile: React.FC<MovieReview> = ({
   title,
@@ -10,33 +9,12 @@ const Tile: React.FC<MovieReview> = ({
   image,
   isaRating,
   seanRating,
-  reviewText
 }) => {
-
   const [gold, setGold] = useState<boolean>(false);
-
-  const isaBees = [];
-  const seanBees = [];
-
-  for (let i = 0; i < isaRating!; i++) {
-    if (isaRating! - i < 1) {
-      isaBees.push(<HalfBee />);
-    } else {
-      isaBees.push(<Bee />);
-    }
-  }
-
-  for (let i = 0; i < seanRating!; i++) {
-    if (seanRating! - i < 1) {
-      seanBees.push(<HalfBee />);
-    } else {
-      seanBees.push(<Bee />);
-    }
-  }
 
   useEffect(() => {
     if (seanRating! + isaRating! === 10) {
-      setGold(true)
+      setGold(true);
     }
   }, []);
 
@@ -47,20 +25,7 @@ const Tile: React.FC<MovieReview> = ({
         <h3>{year}</h3>
       </div>
       <img src={image} alt={title} />
-      <div className={styles.RatingsContainer}>
-        {!!isaRating && (
-          <div className={styles.Rating}>
-            <h2>Isa</h2>
-            <div className={styles.BeeContainer}>{isaBees}</div>
-          </div>
-        )}
-        {!!seanRating && (
-          <div className={styles.Rating}>
-            <h2>Sean</h2>
-            <div className={styles.BeeContainer}>{seanBees}</div>
-          </div>
-        )}
-      </div>
+      <Bees isaRating={isaRating} seanRating={seanRating} />
     </div>
   );
 };

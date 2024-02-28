@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styles from "./Review.module.css";
 
 // Assuming this is the shape of your review data
@@ -23,9 +23,9 @@ function Review() {
   useEffect(() => {
     // Fetch the review details based on `title`
     fetch(`/api/reviews/${title}`)
-      .then(response => response.json())
-      .then(data => setReview(data)) // Set the fetched review data
-      .catch(error => console.error('Error fetching review:', error));
+      .then((response) => response.json())
+      .then((data) => setReview(data)) // Set the fetched review data
+      .catch((error) => console.error("Error fetching review:", error));
   }, [title]); // Include `title` in the dependency array to refetch when it changes
 
   // Conditionally render the review content or a loading message

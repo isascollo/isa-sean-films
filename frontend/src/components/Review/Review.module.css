@@ -1,16 +1,16 @@
 .Content {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    max-width: 1248px;
-    gap: 24px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1248px;
+  gap: 24px;
 }
 
 .Text {
-    padding: 24px 24px 24px 0 ;
+  padding: 24px 24px 24px 0;
 }
 
 img {
-    max-height: 520px;
-    width: auto;
+  max-height: 520px;
+  width: auto;
 }

@@ -1,0 +1,17 @@
+.BeeContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.Rating {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.Rating h2 {
+  width: 64px;
+  text-align: left !important;
+  line-height: 110%;
+  margin: 4px 0 4px 0 !important;
+}
