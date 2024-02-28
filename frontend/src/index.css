@@ -16,3 +16,8 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+html {
+  overflow-y: scroll;
+}
+

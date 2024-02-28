@@ -1,16 +1,82 @@
+button {
+  font-weight: bold;
+  width: 80px;
+  padding: 6px;
+  background-color: #f1a100;
+  border: #f1a100 4px solid;
+  border-radius: 12px;
+}
+
+button:hover {
+  background-color: #ffb216;
+  border: #ffb216 4px solid;
+}
+
+button:active {
+  background-color: #e39900;
+  border: #e39900 4px solid;
+}
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.Header {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 24px 0;
+  gap: 16px;
+}
+
+.ReviewContainer {
+  display: flex;
+  background-color: #ffc2c2;
+  border: #ffb2b2 20px solid;
+  border-radius: 12px;
+  padding: 32px;
+  min-width: 720px;
+}
+
+.ContentContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 .Content {
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   width: 100%;
   max-width: 1248px;
   gap: 24px;
 }
 
+.LeftContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+}
 .Text {
-  padding: 24px 24px 24px 0;
+  display: flex;
+  background-color: #ffd6d6;
+  border-radius: 12px;
+  padding: 24px;
 }
 
 img {
   max-height: 520px;
   width: auto;
+  border-radius: 12px;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+p {
+  margin-left: 4px;
 }
