@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./Review.module.css";
 import Bees from "../Bees/Bees";
-
-// Assuming this is the shape of your review data
-interface ReviewType {
-  title: string;
-  year?: number;
-  image?: string;
-  isaRating?: number;
-  seanRating?: number;
-  reviewText?: string;
-}
+import { MovieReview } from "../../types/types";
+import { formatDate } from "../../utils/dateUtils";
 
 function Review() {
   // Access the title parameter from the URL
@@ -19,15 +11,14 @@ function Review() {
   // Decode the URI component in case the title includes special characters
   title = decodeURIComponent(title!);
   // Initialize the review state with a null value, and explicitly type it as ReviewType | null
-  const [review, setReview] = useState<ReviewType | null>(null);
+  const [review, setReview] = useState<MovieReview | null>(null);
 
   const navigate = useNavigate();
 
   // Function to handle button click
   const navigateHome = () => {
-    navigate('/'); // Assuming '/' is your home route
+    navigate("/"); // Assuming '/' is your home route
   };
-
 
   useEffect(() => {
     // Fetch the review details based on `title`
@@ -55,8 +46,12 @@ function Review() {
                   isaRating={review.isaRating}
                   seanRating={review.isaRating}
                 />
+                <div className={styles.Footer}>
+                  <div>Created: {formatDate(review.dateAdded)}</div>
+                  <div>Updated: {formatDate(review.dateUpdated)}</div>
+                </div>
               </div>
-                {review.image && <img src={review.image} alt={review.title} />}
+              {review.image && <img src={review.image} alt={review.title} />}
             </div>
           </div>
         ) : (

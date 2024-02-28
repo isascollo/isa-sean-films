@@ -28,6 +28,8 @@ const reviewSchema = new mongoose.Schema({
   isaRating: Number,
   seanRating: Number,
   reviewText: String,
+  dateAdded: Date,
+  dateUpdated: Date,
 });
 
 const Review = mongoose.model("Review", reviewSchema);
@@ -56,16 +58,14 @@ app.get("/api/reviews/:title", (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-// POST route to submit a new review
 app.post("/api/reviews", (req, res) => {
-  const newReview = new Review({
-    title: req.body.title,
-    year: req.body.year,
-    image: req.body.image,
-    isaRating: req.body.isaRating,
-    seanRating: req.body.seanRating,
-    reviewText: req.body.reviewText,
-  });
+  const newReviewData = {
+    ...req.body,
+    dateAdded: new Date(),
+    dateUpdated: new Date(),
+  };
+
+  const newReview = new Review(newReviewData);
 
   newReview
     .save()

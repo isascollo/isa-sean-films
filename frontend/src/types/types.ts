@@ -5,4 +5,6 @@ export interface MovieReview {
   isaRating?: number;
   seanRating?: number;
   reviewText?: string;
+  dateAdded?: Date;
+  dateUpdated?: Date;
 }
