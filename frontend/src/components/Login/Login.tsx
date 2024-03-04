@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
+import { useAuth } from "../../context/AuthContext";
 
 interface LoginProps {
   onClose: () => void;
@@ -7,6 +8,7 @@ interface LoginProps {
 
 const Login: React.FC<LoginProps> = ({ onClose }) => {
   const [password, setPassword] = useState("");
+  const { setAdminMode } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,6 +28,7 @@ const Login: React.FC<LoginProps> = ({ onClose }) => {
 
       const data = await response.json();
       localStorage.setItem("token", data.token);
+      setAdminMode(true);
       alert("Login successful!");
       onClose();
     } catch (error) {
