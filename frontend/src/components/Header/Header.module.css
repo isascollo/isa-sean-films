@@ -11,6 +11,22 @@
   width: 100%;
 }
 
+.HeadingContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.Sean,
+.Sean:hover {
+  color: #fedeb7;
+  font-size: 72px;
+  background-color: inherit;
+  border: none;
+  margin: 24px 16px 24px 16px;
+  padding: 0;
+  width: auto;
+}
+
 .Header h1 {
   font-size: 72px;
   margin: 24px 0 24px 0;

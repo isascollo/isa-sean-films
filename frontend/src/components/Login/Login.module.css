@@ -1,0 +1,19 @@
+.Login {
+  display: flex;
+  border-radius: 12px;
+  flex-direction: column;
+  color: #330c2f;
+  position: absolute;
+  top: 220px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 16px;
+  z-index: 1000;
+  width: 200px;
+  gap: 8px;
+}
+
+.Login input {
+  width: 96.5%;
+}

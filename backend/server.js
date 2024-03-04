@@ -2,37 +2,24 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const Review = require("./models/Review");
+const Secret = require("./models/Secret");
 
 require("dotenv").config();
 
 const port = process.env.PORT || 5000;
 const mongoURI = process.env.MONGODB_URI;
 
-// Enable CORS for all requests
 app.use(cors());
 
-// Middleware to parse JSON bodies
 app.use(express.json());
 
-// Connect to MongoDB
 mongoose
   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
-
-// Define a Mongoose schema and model for movie reviews
-const reviewSchema = new mongoose.Schema({
-  title: String,
-  year: Number,
-  image: String,
-  isaRating: Number,
-  seanRating: Number,
-  reviewText: String,
-  dateAdded: Date,
-  dateUpdated: Date,
-});
-
-const Review = mongoose.model("Review", reviewSchema);
 
 app.get("/api/test", (req, res) => {
   res.send("Hello World!");
@@ -71,6 +58,16 @@ app.post("/api/reviews", (req, res) => {
     .save()
     .then(() => res.json("Review added!"))
     .catch((err) => res.status(400).json("Error: " + err));
+});
+
+app.post("/login", async (req, res) => {
+  const secret = await Secret.findOne(); // Assuming there's only one document in the Secret collection
+  if (secret && (await bcrypt.compare(req.body.password, secret.password))) {
+    const token = jwt.sign({ _id: secret._id }, process.env.JWT_SECRET);
+    res.json({ token });
+  } else {
+    res.status(400).send("Invalid password");
+  }
 });
 
 app.listen(port, () => {
